@@ -1,0 +1,57 @@
+.Heading{
+    font-family: "Oswald";
+    text-align: center;
+}
+
+.Heading h1{
+    font-size: 30px;
+}
+
+.Heading h2{
+    font-size: 20px;
+}
+
+.Heading hr{
+    width: 700px;
+    border-width: 3px;
+    border-color: black;
+}
+
+.formContainer {
+    padding: 10px;
+    background-color: white;
+    align-self: center;
+    max-width: 500px;
+    margin: auto;
+    width: 60%;
+  }
+
+  .formContainer input[type=text], .formContainer input[type=password], .formContainer input[type=tel],.formContainer input[type=file] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  .formContainer input[type=text]:focus, .formContainer input[type=password]:focus,.formContainer input[type=file]:focus, .formContainer input[type=tel]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  .formContainer .btnForm {
+    background-color: #100909;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  
+  /* Add some hover effects to buttons */
+  .formContainer .btnForm:hover {
+    opacity: 1;
+  }

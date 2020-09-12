@@ -1,0 +1,336 @@
+.topBar{
+	position: sticky;
+	background-color: white;
+}
+.logo{
+	width:200px;
+	height: 80px;
+	flex-shrink: 0;
+}
+
+.navIcon{
+	color: black;
+	float: right;
+	margin:7px 7px 7px 7px;
+	transition: 0.3s;
+}
+
+.navIcon:hover{
+	color: gray;
+}
+
+.nav-link{
+	font-family: "Oswald";
+	font-size: 18px;
+	margin-left:20px;
+	color: black;
+	transition: 0.3s
+}
+.nav-link:hover{
+	color: gray;
+}
+
+
+.slideArea{
+	height: 1000px;
+}
+
+.slideArea img{
+	height: 1000px;
+	width: 100%;
+	object-fit: fill;
+	object-position: center;
+	background-color: rgba();
+}
+
+.search-form-wrapper {
+    display: none;
+    left: 0;
+    right: 0;
+    padding: 20px 15px;
+    transition:  all .5s ease;
+}
+
+.search-form-wrapper.open {
+    display: block;
+    padding-right: 50px;
+    padding-left: 100px;
+    transition:  all .5s ease;
+}
+
+
+.searchBar{
+	flex-grow: 1;
+	border-width: 0px 0px 2px 0px;
+	height: 50px;
+	border-color: black;
+	transition: 0.3s;
+	transition-timing-function: ease;
+}
+
+.searchBar:focus{
+	outline: none;
+	border-width: 0px 0px 5px 0px;	
+}
+
+.icon{
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	color: black;
+}
+
+.initialImg{
+	margin: 5px 5px 5px 5px;
+	height: 250px;
+	width: 250px;
+	border-radius: 50%;
+}
+
+.img_fluid{
+	max-width: 100%;
+	height: auto;
+	transition: .3s ease;
+	border-radius: 10px;
+}
+
+.img_fluid:hover{
+	transform: scale(1.1);
+}
+
+.img_fluid2{
+	width: 300px;;
+	height: 300px;
+}
+
+.section{
+	padding-top: 50px;
+	background-color: #CACACA;
+	padding-bottom: 50px;
+}
+
+.section2{
+	padding: 50px 50px;
+}
+
+.section2 h1{
+	font-family: "Dancing Script";
+	text-align: center;
+	font-size: 60px;
+}
+
+.section2 h3{
+	font-family: "Oswald";
+	font-size: 20px;
+	text-align: center;
+}
+
+.section2 h5{
+	font-family: "Oswald";
+}
+
+.section2 h6{
+	font-family: "Oswald";
+}
+
+
+.section2 h6::before{
+	font-family: "Oswald";
+}
+
+.itemIcon{
+	color: black;
+	margin: 5px 5px 5px 5px;
+}
+
+.itemIcon:hover{
+	color: gray;
+}
+
+
+
+footer{
+	background-color: #404040;
+	padding: 30px 30px;
+}
+
+footer h1{
+	font-family: "Oswald";
+	font-size: 30px;
+	color: white;
+}
+
+footer hr{
+	border: 1px solid white;
+	width: auto
+}
+
+footer h4{
+	font-family: "Mulish";
+	font-size: 13px;
+	color: white;
+}
+
+.card{
+	margin-top: 10px;
+}
+
+.isActive {
+	color: currentColor;
+	opacity: 0.5;
+   }
+
+.myBtn{
+	border-width: 0px;
+	background: white;
+}
+.myBtn:focus{
+	border-width: 0px;
+}
+
+.idmodal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 3px solid #000000;
+	width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+.a2::before{
+	content: "Description: ";
+}
+
+.a3::before{
+	content: "Price: $";
+}
+
+.a4::before{
+	content: "Seller Location: ";
+}
+
+.a5::before{
+	content: "Quantity Availabe: ";
+}
+
+.box-element{
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 10px;
+
+}
+
+.thumbnail{
+	width: 100%;
+	height: 200px;
+	-webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+    box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+}
+
+.product{
+	border-radius: 0 0 4px 4px;
+}
+
+.bg-dark{
+	background-color: #4f868c!important;
+}
+
+#cart-icon{
+	width:25px;
+	display: inline-block;
+	margin-left: 15px;
+}
+
+#cart-total{
+	display: block;
+	text-align: center;
+	color:#fff;
+	background-color: red;
+	width: 20px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 14px;
+}
+
+.col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
+	margin-top: 10px;
+}
+
+.btn{
+	border-radius: 0;
+}
+
+.row-image{
+	width: 100px;
+}
+
+.form-field{
+	width:250px;
+	display: inline-block;
+	padding: 5px;
+}
+
+.cart-row{
+	display: flex;
+    align-items: flex-stretch;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ececec;
+
+}
+
+.quantity{
+	display: inline-block;
+	font-weight: 700;
+	padding-right:10px;
+	
+
+}
+
+.chg-quantity{
+	width: 12px;
+	cursor: pointer;
+	display: block;
+	margin-top: 5px;
+	transition:.1s;
+}
+
+.chg-quantity:hover{
+	opacity: .6;
+}
+
+
+.hidden{
+	display: none!important;
+}

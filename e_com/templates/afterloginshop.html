@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Shophop</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="{% static 'css_files/Style.css' %}" rel="stylesheet">
+	<link href="{% static 'css_files/form.css' %}" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Mulish' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="{% static 'js_files/JSfile.js' %}"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg sticky-top topBar" id="navbar">
+		<div class="container-fluid sticky-top">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+			</button>
+
+			<a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" class="logo"></a>
+
+			<div class="hidden-xs navbar-form navbar-right" id="remove">
+		        <a href="#search" class="search-form-tigger icon"  data-toggle="search-form"><i class="fa fa-search navIcon fa-lg" aria-hidden="true"></i></a>
+		    </div>
+		    <a href="#cart"><i class="fa fa-shopping-cart navIcon fa-lg" aria-hidden="true"></i></a>
+			
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item ">
+						<a class="nav-link" href="{%url 'User Login'%}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link isActive" href="{%url 'Product Page'%}">Shop</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{%url 'Seller Product Detail'%}">Become a seller</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link open-button"  href="{%url 'Homepage'%}">Logout</a>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	</nav>
+	<div class="form-popup" id="myForm">
+		<form action="{%url 'User Login'%}" method="POST"class="form-container">
+			{% csrf_token %} 
+		  <h1>Login</h1>
+		  <label for="email"><b>Email</b></label>
+		  <input type="text" placeholder="Enter Email" name="email" required>
+	  
+		  <label for="psw"><b>Password</b></label>
+		  <input type="password" placeholder="Enter Password" name="psw" required>
+	  
+		  <button type="submit" class="btn">Login</button>
+		  <button type="button" class="btn" onclick="closeForm()">Close</button>
+		  <h3>Don't have a account?</h3>
+		  <h4><a class="popUpReg" href="register.html">Register here</a></a></h4>
+		</form>
+	</div>
+	<script>
+		function openForm() {
+		  document.getElementById("myForm").style.display = "block";
+		}
+		
+		function closeForm() {
+		  document.getElementById("myForm").style.display = "none";
+		}
+    </script>
+    <div class="search-form-wrapper" id="togglebar">
+        <form class="search-form" method="GET" id="search" action="/product_login_search/" name="search">
+           <div class="input-group">
+              <input type="text" name="search" class="searchBar" placeholder="Search">
+              <span class="input-group-addon search-close" id="basic-addon2"><i class="fa fa-times navIcon fa-lg" aria-hidden="true"></i></span>
+           </div>
+        </form>
+     </div>
+ 
+	 <section class="section2">
+		<h1>Shop Here</h1>
+		<br><br>
+
+		<div class="row text-center equal-height-columns" >
+			<script>
+				var i = 0;
+			</script>
+			{% for item in qs %}
+				<div class="col-md-3">
+				<div class="card text-center">
+					<div class="equal-column-content">
+						<img src="{{item.imagefile.url}}" class="img_fluid">
+						<div class="card-body">
+							<h5>{{item.title}}</h5>
+							<h6>Description: {{item.summary}}</h6>
+							<h6>Price: {{item.price}}$</h6>
+							<h6>Seller Location: {{item.sellerlocation}}</h6>
+							<h6>Quantity Availabe: {{item.quantity}}</h6>
+							<a href="#cart"><i class="fa fa-shopping-cart itemIcon fa-lg" aria-hidden="true"></i></a>
+							<a href="#cart"><i class="fa fa-tags itemIcon fa-lg" aria-hidden="true"></i></a>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div id="myModal" class="idmodal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+					  <span class="close">&times;</span>
+					  <div class="card-body">
+						  <div class="img_slot"></div>
+						  <h5 class="a1"></h5>
+						<h6 class="a2"> </h6>
+						<h6 class="a3">Price: $</h6>
+						<h6 class="a4">Seller Location: </h6>
+						<h6 class="a5">Quantity Availabe: </h6>
+						<a href="#cart"><i class="fa fa-shopping-cart itemIcon fa-lg" aria-hidden="true"></i></a>
+						<a href="#cart"><i class="fa fa-tags itemIcon fa-lg" aria-hidden="true"></i></a>
+					</div>
+					</div>
+				  
+				</div>
+				<script>
+					var modal = document.getElementsByClassName("idmodal")[i];
+					
+					var btn = document.getElementsByClassName("myBtn")[i];
+					
+					var span = document.getElementsByClassName("close")[i];
+	
+					var a = document.getElementsByClassName("a1")[i];
+					var b = document.getElementsByClassName("a2")[i];
+					var c = document.getElementsByClassName("a3")[i];
+					var d = document.getElementsByClassName("a4")[i];
+					var e = document.getElementsByClassName("a5")[i];
+					var src = document.getElementsByClassName("img_slot")[i];
+	
+					var text = ['{{item.title}}','{{item.summary}}','{{item.price}}','{{item.sellerlocation}}','{{item.quantity}}'];
+					var img = document.createElement("img");
+					img.classList.add("img_fluid");
+					
+					btn.onclick = function() {
+						img.src = "/media/{{item.imagefile}}";
+						src.appendChild(img);
+						a.innerHTML = text[0];
+						b.innerHTML = text[1];
+						c.innerHTML = text[2];
+						d.innerHTML = text[3];
+						e.innerHTML = text[4];
+						  modal.style.display = "block";
+					}
+					
+					
+					span.onclick = function() {
+					  modal.style.display = "none";
+					}
+					
+					
+					window.onclick = function(event) {
+					  if (event.target == modal) {
+						modal.style.display = "none";
+					  }
+					  
+					}
+					i = i+1;
+				</script>
+			{%endfor%}
+			<script>
+				var i = 0;
+			</script>
+			{% for item in qs %}
+				<div class="col-md-3">
+				<div class="card text-center">
+					<div class="equal-column-content">
+						<button class="myBtn"><img src="/media/{{item.imagefile}}" class="img_fluid"></button>
+						<div class="card-body">
+							<h5>{{item.title}}</h5>
+							<h6>Description: {{item.summary}}</h6>
+							<h6>Price: {{item.price}}$</h6>
+							<h6>Seller Location: {{item.sellerlocation}}</h6>
+							<h6>Quantity Availabe: {{item.quantity}}</h6>
+							<a href="#cart"><i class="fa fa-shopping-cart itemIcon fa-lg" aria-hidden="true"></i></a>
+							<a href="#cart"><i class="fa fa-tags itemIcon fa-lg" aria-hidden="true"></i></a>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div id="myModal" class="idmodal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+					  <span class="close">&times;</span>
+					  <div class="card-body">
+						  <div class="img_slot"></div>
+						  <h5 class="a1"></h5>
+						<h6 class="a2"> </h6>
+						<h6 class="a3">Price: $</h6>
+						<h6 class="a4">Seller Location: </h6>
+						<h6 class="a5">Quantity Availabe: </h6>
+						<a href="#cart"><i class="fa fa-shopping-cart itemIcon fa-lg" aria-hidden="true"></i></a>
+						<a href="#cart"><i class="fa fa-tags itemIcon fa-lg" aria-hidden="true"></i></a>
+					</div>
+					</div>
+				  
+				</div>
+				<script>
+					var modal = document.getElementsByClassName("idmodal")[i];
+					
+					var btn = document.getElementsByClassName("myBtn")[i];
+					
+					var span = document.getElementsByClassName("close")[i];
+	
+					var a = document.getElementsByClassName("a1")[i];
+					var b = document.getElementsByClassName("a2")[i];
+					var c = document.getElementsByClassName("a3")[i];
+					var d = document.getElementsByClassName("a4")[i];
+					var e = document.getElementsByClassName("a5")[i];
+					var src = document.getElementsByClassName("img_slot")[i];
+	
+					var text = ['{{item.title}}','{{item.summary}}','{{item.price}}','{{item.sellerlocation}}','{{item.quantity}}'];
+					var img = document.createElement("img");
+					img.classList.add("img_fluid");
+					
+					btn.onclick = function() {
+						img.src = "/media/{{item.imagefile}}";
+						src.appendChild(img);
+						a.innerHTML = text[0];
+						b.innerHTML = text[1];
+						c.innerHTML = text[2];
+						d.innerHTML = text[3];
+						e.innerHTML = text[4];
+						  modal.style.display = "block";
+					}
+					
+					
+					span.onclick = function() {
+					  modal.style.display = "none";
+					}
+					
+					
+					window.onclick = function(event) {
+					  if (event.target == modal) {
+						modal.style.display = "none";
+					  }
+					  
+					}
+					i = i+1;
+				</script>
+			{%endfor%}
+		</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+	<div class="row text-center equal-height-columns" >
+		<div class="col-md-4">
+			  <h1>About us</h1>
+			  <hr>
+			  <h4>
+			  Here is about us
+			  </h4>
+		  </div>
+		  <div class="col-md-4">
+			<h1>Business Time</h1>
+			<hr>
+			<h4>
+				Monday - Friday: 08.00am to 05.00pm<br><br>
+				Saturday: 10.00am to 08.00pm<br><br>
+				Sunday: Closed<br><br>
+			</h4>
+		</div>
+		<div class="col-md-4">
+			<h1>Contact us</h1>
+			<hr>
+			<h4>
+				<i class="fa fa-map fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Address: Michael I. Days 3756<br>
+				Preston Street Wichita,<br>
+				KS 67213<br><br>
+
+				<i class="fa fa-phone fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Phone: +1-888 705 770<br><br>
+
+				<i class="fa  fa-envelope fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Email: contactinfo@gmail.com<br>
+			</h4>
+		</div>
+	</div>
+		  
+	
+</footer>
+</body>
+</html>
