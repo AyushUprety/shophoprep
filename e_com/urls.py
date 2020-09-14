@@ -14,13 +14,14 @@ urlpatterns = [
     re_path(r'product/',views.store,name="Product Page"),
     re_path(r'supplierproductdetail/',views.product_detail,name="Seller Product Detail"),
     re_path(r'userlogin/',views.login_validation,name="User Login"),
-    re_path(r'userloginshop/',views.loginproductView.as_view(),name="Shop Login"),
+    
     re_path(r'Productsearch/',views.search,name="Search"),
     re_path(r'product_login_search/',views.login_search,name="Search"),
     re_path(r'item_view/',views.item_view,name="Item page"),
     path('cart/',views.cart,name="cart"),
     path('checkout/',views.checkout,name="checkout"),
     path('update_item/',views.updateItem,name="update_item"),
+    path('loginproductView/',views.updateItem,name="update_item"),
  
 
 ] 
