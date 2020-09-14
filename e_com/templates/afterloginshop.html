@@ -34,13 +34,15 @@
 			<div class="hidden-xs navbar-form navbar-right" id="remove">
 		        <a href="#search" class="search-form-tigger icon"  data-toggle="search-form"><i class="fa fa-search navIcon fa-lg" aria-hidden="true"></i></a>
 		    </div>
-		    <a href="#cart"><i class="fa fa-shopping-cart navIcon fa-lg" aria-hidden="true"></i></a>
+			<a href="{%url 'cart'%}"><i class="fa fa-shopping-cart navIcon fa-lg" aria-hidden="true"></i></a>
+			<p id="cart-total">{{cartItems}}</p>
+			
 			
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item ">
-						<a class="nav-link" href="{%url 'User Login'%}">Home</a>
+						<a class="nav-link" href="{%url 'Product Page'%}">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link isActive" href="{%url 'Product Page'%}">Shop</a>
@@ -99,19 +101,19 @@
 			<script>
 				var i = 0;
 			</script>
-			{% for item in qs %}
+			{% for item in products %}
 				<div class="col-md-3">
 				<div class="card text-center">
 					<div class="equal-column-content">
-						<img src="{{item.imagefile.url}}" class="img_fluid">
+						<img src="/media/{{item.imagefile}}" class="img_fluid">
 						<div class="card-body">
 							<h5>{{item.title}}</h5>
 							<h6>Description: {{item.summary}}</h6>
 							<h6>Price: {{item.price}}$</h6>
 							<h6>Seller Location: {{item.sellerlocation}}</h6>
 							<h6>Quantity Availabe: {{item.quantity}}</h6>
-							<a href="#cart"><i class="fa fa-shopping-cart itemIcon fa-lg" aria-hidden="true"></i></a>
-							<a href="#cart"><i class="fa fa-tags itemIcon fa-lg" aria-hidden="true"></i></a>
+							<button data-product="{{item.id}}" data-action="add" class="btn btn-outline-secondary  add-btn update-cart">Add to Cart</button>
+							<a href="#cart"><i class="fa fa-tags itemIcon fa-lg" aria-hidden="true"></i></a>  
 						</div>
 					</div>
 					</div>

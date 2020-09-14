@@ -47,25 +47,26 @@ def login_validation(request):
 
 
 
-class loginproductView(TemplateView):
-    template_name='afterloginshop.html'
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context = {"qs": CompanyProductDetail.objects.all()}
-        return context
+def loginproductView(request):
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(customer=customer,complete=False)
+    items = order.orderitem_set.all()
+    cartItems = order.get_cart_items
+  
+
+    products = CompanyProductDetail.objects.all()
+    context = {'products':products, 'cartItems':cartItems}
+    return render(request, 'product.html', context)
 
 
 
 
 def store(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer,complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-    else:
-        items = []
-        order = {'get_cart_total':0,'get_cart_items':0, 'shipping':False}
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(customer=customer,complete=False)
+    items = order.orderitem_set.all()
+    cartItems = order.get_cart_items
+  
 
     products = CompanyProductDetail.objects.all()
     context = {'products':products, 'cartItems':cartItems}
